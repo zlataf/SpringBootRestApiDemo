@@ -12,35 +12,39 @@ import com.example.demo.entities.FileInfo;
 
 /**
  * 
- * Spring Data Repository for FileInfo entity
- * Utilizes @Query and @Param approach.
+ * Spring Data Repository for FileInfo entity Utilizes @Query and @Param
+ * approach.
+ * 
  * @author zfomenko
  *
  */
 @Repository
 @Transactional
-public interface FileInfoRepository extends JpaRepository<FileInfo,Long>{
+public interface FileInfoRepository extends JpaRepository<FileInfo, Long> {
 	/**
 	 * This method is to obtain all records from the file uploads DB
+	 * 
 	 * @return List<FileInfo>
 	 */
-	@Query(value = "select new FileInfo(f.id,f.fileName,f.description,f.type,f.uploadedTs, f.publicAccess, f.size) from FileInfo f ")
+	@Query(value = "select new FileInfo(f.id,f.fileName,f.description,f.fileType,f.uploadedTs, f.publicAccess, f.size) from FileInfo f ")
 	List<FileInfo> findAllRecords();
-	
-    /**
-     * This method is to find the file metadata by the given file id 
-     * @param id
-     * @return FileInfo
-     */
-    @Query(value = "select new FileInfo(f.id,f.fileName,f.description,f.type,f.uploadedTs, f.publicAccess, f.size) from FileInfo f where f.id = :id")
-    FileInfo findRecordById(@Param("id") Long id);
 
-    /**
-     * This method is to find records for the files with fileName like %name%
-     * @param name
-     * @return List<FileInfo>
-     */
-    @Query(value = "select new FileInfo(f.id,f.fileName,f.description,f.type,f.uploadedTs, f.publicAccess, f.size) from FileInfo f where f.fileName = :name")
+	/**
+	 * This method is to find the file metadata by the given file id
+	 * 
+	 * @param id
+	 * @return FileInfo
+	 */
+	@Query(value = "select new FileInfo(f.id,f.fileName,f.description,f.fileType,f.uploadedTs, f.publicAccess, f.size) from FileInfo f where f.id = :id")
+	FileInfo findRecordById(@Param("id") Long id);
+
+	/**
+	 * This method is to find records for the files with fileName like %name%
+	 * 
+	 * @param name
+	 * @return List<FileInfo>
+	 */
+	@Query(value = "select new FileInfo(f.id,f.fileName,f.description,f.fileType,f.uploadedTs, f.publicAccess, f.size) from FileInfo f where f.fileName = :name")
 	List<FileInfo> findRecordByName(@Param("name") String name);
 
 }

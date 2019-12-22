@@ -28,7 +28,7 @@ public class FileInfo {
 	@Column(name="FILEDESCRIPTION")
 	private String description;
 	@Column(name="FILETYPE")
-	private String type;
+	private String fileType;
 	@Column(name="UPLOADED_TS") 
 	private Timestamp uploadedTs;
 	@Column(name="PUBLICACCESS")  
@@ -56,7 +56,7 @@ public class FileInfo {
     	this.id = id;
     	this.fileName = fileName;
     	this.description = description;
-    	this.type = type;
+    	this.fileType = type;
     }
 
 	/**
@@ -73,7 +73,7 @@ public class FileInfo {
 			java.util.Date uploadedTs, boolean publicAccess, Long size) {
     	this.fileName = originalFilename;
     	this.description = fileDescription;
-    	this.type = fileType;
+    	this.fileType = fileType;
     	this.size = size;
     	this.uploadedTs=(Timestamp) uploadedTs;
     	this.publicAccess=publicAccess;
@@ -94,7 +94,7 @@ public class FileInfo {
 		this.id = id;
     	this.fileName = originalFilename;
     	this.description = fileDescription;
-    	this.type = fileType;
+    	this.fileType = fileType;
     	this.size = size;
     	this.uploadedTs=(Timestamp) uploadedTs;
     	this.publicAccess=publicAccess;
@@ -133,14 +133,14 @@ public class FileInfo {
 	 * @return
 	 */
 	public String getType() {
-		return this.type;
+		return this.fileType;
 	}
 	/**
 	 * set tupe
 	 * @param type
 	 */
 	public void setType(String type) {
-		this.type = type;
+		this.fileType = type;
 	}
 	/**
 	 * get description
