@@ -13,6 +13,11 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 import com.exmple.demo.utilities.Utilities;
 
+/**
+ * @author zlata
+ * Custom Error Handler
+ *
+ */
 @ControllerAdvice
 public class DemoAppExeptionHandler extends ResponseEntityExceptionHandler {
 
@@ -38,7 +43,7 @@ public class DemoAppExeptionHandler extends ResponseEntityExceptionHandler {
 			errorResponse.setError("MethodArgumentTypeMismatchException : " + e.getMessage());
 			String parameter = ((MethodArgumentTypeMismatchException) e).getName();
 			if (parameter.equalsIgnoreCase("addedAfter") || parameter.equalsIgnoreCase("addedBefore")) {
-				parameter = "Use the Format " + Utilities.Date_Format + " for " + parameter;
+				parameter = "Use the Format " + Utilities.DATE_FORMAT + " for " + parameter;
 
 			}
 			errorResponse.setContext(parameter);
@@ -46,7 +51,6 @@ public class DemoAppExeptionHandler extends ResponseEntityExceptionHandler {
 		} else if (e instanceof MalformedURLException) {
 			errorResponse.setError("MalformedURLException : " + e.getMessage());
 		}
-
 		return new ResponseEntity<ErrorResponse>(errorResponse, HttpStatus.BAD_REQUEST);
 	}
 

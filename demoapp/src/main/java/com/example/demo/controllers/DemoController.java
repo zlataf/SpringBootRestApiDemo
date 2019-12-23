@@ -73,7 +73,7 @@ public class DemoController {
 		LOGGER.debug("/downloadFile/" + id);
 		FileInfo result = infoDataService.findRecordById(id);
 		if (result == null) {
-			throw new DemoAppExeption(Utilities.NoDataForId + id);
+			throw new DemoAppExeption(Utilities.NO_DATA_FOR_ID + id);
 		}
 		String mimeType = result.getType();
 		Resource resource;
@@ -81,7 +81,7 @@ public class DemoController {
 			resource = infoDataService.downloadFile(pathToUpload + id);
 			return ResponseEntity.ok().contentType(MediaType.parseMediaType(mimeType)).body(resource);
 		} catch (MalformedURLException e) {
-			throw new DemoAppExeption(Utilities.NoFileForId + id);
+			throw new DemoAppExeption(Utilities.NO_FILE_FOR_ID + id);
 		}
 
 	}
@@ -99,7 +99,7 @@ public class DemoController {
 		if (result != null)
 			return ResponseEntity.ok().body(result);
 		else
-			throw new DemoAppExeption(Utilities.NoDataForId + id);
+			throw new DemoAppExeption(Utilities.NO_DATA_FOR_ID + id);
 	}
 
 	/**
@@ -125,7 +125,7 @@ public class DemoController {
 		LOGGER.debug("/searchFileId/");
 		if (fileName == null && fileType == null && addedBefore == null && addedAfter == null && sizeLarger == null
 				&& sizeSmaller == null && publicAccess == null) {
-			throw new DemoAppExeption(Utilities.EmptyParametersList);
+			throw new DemoAppExeption(Utilities.EMPTY_PARAMETERS_LIST);
 		}
 
 		Timestamp dateBefore = null;
@@ -159,7 +159,7 @@ public class DemoController {
 		StringBuilder output = new StringBuilder();
 
 		if (file.isEmpty()) {
-			throw new DemoAppExeption(Utilities.EmptyFile);
+			throw new DemoAppExeption(Utilities.EMPTY_FILE);
 		}
 
 		try {

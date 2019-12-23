@@ -1,5 +1,4 @@
-DROP TABLE IF EXISTS metadata;
-create table metadata
+create table  IF NOT EXISTS metadata
 (
    id BIGINT PRIMARY KEY AUTO_INCREMENT NOT NULL,
    filename VARCHAR(255) NOT NULL,
