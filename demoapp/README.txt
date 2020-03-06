@@ -1,5 +1,5 @@
 The sample "file upload management API" is to demonstrate the next functionalities:
-
+0
 00
 1. Uploading the file with the associated metadata.
 The metadata is injected as a set of required/optional parameters, while the file is getting uploaded inside the POST HTTP request.
