@@ -24,6 +24,10 @@ Another is to retrieve metadata for the known id of the uploaded file.
 URL: /api/demo/getFileMetaData/{id}
 Parameter: id is used as a path parameter.
 
+
+
+
+
 3. Downloading a previously uploaded file.
 This call returns the file with a proper HTTP mime-type set, making it suitable for the "content streaming".
 
